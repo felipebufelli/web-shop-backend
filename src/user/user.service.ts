@@ -8,7 +8,7 @@ export class UserService {
 
     private users: User[] = [];
 
-    async createUser(createUserDto: CreateUserDto): Promise<User> {
+    async create(createUserDto: CreateUserDto): Promise<User> {
 
         
         const saltOrRounds = 10;
@@ -24,7 +24,7 @@ export class UserService {
         return user;
     }
 
-    async getAllUsers(): Promise<User[]> {
+    async findAll(): Promise<User[]> {
         return this.users;
     }
 }
