@@ -15,13 +15,12 @@ export class UserService {
 
 
     async create(createUserDto: CreateUserDto): Promise<UserEntity> {
-
-        
         const saltOrRounds = 10;
         const passwordHashed = await hash(createUserDto.password, saltOrRounds);
 
         return this.userRepository.save({
             ...createUserDto, 
+            type_user: 1, 
             password: passwordHashed,
         }); 
     }
