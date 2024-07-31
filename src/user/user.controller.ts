@@ -29,7 +29,7 @@ export class UserController {
 
   @Get('/:userId')
   async getUserInformation(
-    @Param(':userId') userId: number,
+    @Param('userId') userId: number,
   ): Promise<ReturnUserDto> {
     return new ReturnUserDto(
       await this.userService.findUserByIdUsingRelations(userId),
