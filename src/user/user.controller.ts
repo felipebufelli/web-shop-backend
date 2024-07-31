@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
   UsePipes,
   ValidationPipe,
@@ -9,7 +10,6 @@ import {
 import { CreateUserDto } from './dtos/createUser.dto';
 import { UserService } from './user.service';
 import { ReturnUserDto } from './dtos/returnUser.dto';
-
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -24,6 +24,15 @@ export class UserController {
   async getAllUsers(): Promise<ReturnUserDto[]> {
     return (await this.userService.findAll()).map(
       (obj) => new ReturnUserDto(obj),
+    );
+  }
+
+  @Get('/:userId')
+  async getUserInformation(
+    @Param(':userId') userId: number,
+  ): Promise<ReturnUserDto> {
+    return new ReturnUserDto(
+      await this.userService.findUserByIdUsingRelations(userId),
     );
   }
 }
