@@ -7,11 +7,13 @@ import { CityModule } from './city/city.module';
 import { AddressModule } from './address/address.module';
 import { CacheModule } from './cache/cache.module';
 import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.development.local']
+      envFilePath: ['.env.development.local'],
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -29,8 +31,9 @@ import { AuthModule } from './auth/auth.module';
     CityModule,
     AddressModule,
     CacheModule,
-    AuthModule,],
+    AuthModule,
+  ],
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
