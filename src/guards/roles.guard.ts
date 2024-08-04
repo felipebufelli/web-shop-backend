@@ -26,7 +26,6 @@ export class RolesGuard implements CanActivate {
 
     //Busca o Authorization
     const { authorization } = context.switchToHttp().getRequest().headers;
-    console.log('Authorization: ', authorization);
     if (!authorization) return false;
 
     //Verifica o token enviado

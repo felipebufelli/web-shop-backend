@@ -51,6 +51,9 @@ DB_PORT=5432
 DB_USERNAME=seu-usuario
 DB_PASSWORD=sua-senha
 DB_DATABASE=nome-do-banco
+
+JWT_SECRET=senha-do-jwt
+JWT_EXPIRES_IN=1h
 ```
 
 4. Execute as migrações do banco de dados:
