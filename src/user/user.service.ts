@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dtos/createUser.dto';
 import { UserEntity } from './entities/user.entity';
 import { hash } from 'bcrypt';
@@ -13,6 +17,12 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<UserEntity> {
+    const user = this.findUserByEmail(createUserDto.email).catch(
+      () => undefined,
+    );
+    if (user) {
+      throw new BadRequestException(`Email já registrado.`);
+    }
     const saltOrRounds = 10;
     const passwordHashed = await hash(createUserDto.password, saltOrRounds);
 
