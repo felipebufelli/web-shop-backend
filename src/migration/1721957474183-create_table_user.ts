@@ -3,6 +3,7 @@ import { MigrationInterface, QueryRunner } from "typeorm";
 export class CreateTableUser1721957474183 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        console.log('Execução Migration - Create user');
         queryRunner.query(`
             CREATE TABLE public.user(
                 id integer NOT NULL,

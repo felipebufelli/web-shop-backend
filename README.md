@@ -43,7 +43,7 @@ yarn install
 
 3. Configure as variáveis de ambiente:
 
-Crie um arquivo `.env` na raiz do projeto e configure as seguintes variáveis:
+Crie um arquivo `.env.development.local` na raiz do projeto e configure as seguintes variáveis:
 
 ```env
 DB_HOST=localhost
