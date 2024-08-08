@@ -20,7 +20,7 @@ export class UserService {
     const user = this.findUserByEmail(createUserDto.email).catch(
       () => undefined,
     );
-    if (user) {
+    if (!user) {
       throw new BadRequestException(`Email já registrado.`);
     }
     const saltOrRounds = 10;

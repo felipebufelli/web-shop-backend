@@ -30,6 +30,7 @@ describe('StateService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+    expect(stateRepository).toBeDefined();
   });
 
   it('should return a list of states', async () => {

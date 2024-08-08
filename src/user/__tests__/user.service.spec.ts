@@ -32,6 +32,7 @@ describe('UserService', () => {
 
   it('should be defined', () => {
     expect(service).toBeDefined();
+    expect(userRepository).toBeDefined();
   });
 
   it('should return user in findUserByEmail', async () => {
@@ -75,10 +76,9 @@ describe('UserService', () => {
     const user = await service.findUserbyId(userEntityMock.id);
     expect(user).toEqual(userEntityMock);
   });
-  
+
   it('should return error if user exist', async () => {
-    
-    expect(service.create(createUserMock)).rejects.toThrow()
+    expect(service.create(createUserMock)).rejects.toThrow();
   });
   /*
   TODO - CONFIRMAR ESSE TESTE UNITÁRIO
